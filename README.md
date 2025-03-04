@@ -12,22 +12,44 @@ cd Image-processing
 pip install -r requirements.txt
 ```
 
-## 🔧 Additional Setup for Cython
+🔧 Additional Setup for Cython
 After installing the dependencies, you will need to install the Microsoft C++ Build Tools to compile the Cython code on Windows. Follow these steps:
 
-**Install Microsoft C++ Build Tools:**
+Install Microsoft C++ Build Tools:
+Download and install the tools from the following link: Microsoft Visual C++ Build Tools.
+During installation, ensure that you select C++ build tools under the Workloads section.
+🚨 Cython Compilation (Windows)
+To compile the Cython modules on Windows, you'll need to have the Visual Studio Build Tools installed. If you already have Microsoft Visual C++ Build Tools installed, follow these steps:
 
-- Download and install the tools from the following link: Microsoft Visual C++ Build Tools.
-- During installation, ensure that you select C++ build tools under the Workloads section.
-- Once the installation is complete, proceed with the setup for the Cython code by compiling it using the following commands:
+Run the command to set up the Visual Studio environment:
 
-```bash
-cd src
+Open Git Bash or CMD and run the following command to set up the Visual Studio build tools in your terminal:
+
+bash
+Copiar
+Editar
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
+This will configure the environment to use the build tools in the terminal.
+
+Navigate to the project folder:
+
+Change the directory to the folder where the setup.py file and Cython code are located:
+
+bash
+Copiar
+Editar
+cd /c/Users/venta/Downloads/PRUEBA-USO/Image-processing/src
+Compile the Cython code:
+
+Finally, run the following command to compile the Cython file (filters_cython.pyx):
+
+bash
+Copiar
+Editar
 python setup.py build_ext --inplace
-```
-This will compile the Cython code and generate the required extensions for the filters.
+This step will generate the .pyd file (or .so on other systems) that you can use in your Python project.
 
-
+This version of the README.md includes the Cython compilation setup instructions in English and provides clear steps for users working on Windows.
 ## 🚀 Usage
 
 After installing the dependencies, you can run the demo script to see the image processing in action:
