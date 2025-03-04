@@ -7,7 +7,7 @@ DTYPE = np.float64
 ctypedef np.float64_t DTYPE_t
 ctypedef np.uint8_t DTYPE_uint8_t
 
-def filtro_gaussiano_cython(np.ndarray[DTYPE_t, ndim=2] imagen):
+def gaussian_filter_cython(np.ndarray[DTYPE_t, ndim=2] imagen):
     """
     Implementación de filtro Gaussiano en Cython.
     
@@ -46,7 +46,7 @@ def filtro_gaussiano_cython(np.ndarray[DTYPE_t, ndim=2] imagen):
 
     return resultado.astype(np.uint8)
 
-def filtro_sobel_cython(np.ndarray[DTYPE_t, ndim=2] imagen):
+def sobel_filter_cython(np.ndarray[DTYPE_t, ndim=2] imagen):
     """
     Implementación de filtro Sobel en Cython.
     
@@ -106,7 +106,7 @@ def filtro_sobel_cython(np.ndarray[DTYPE_t, ndim=2] imagen):
 
     return resultado.astype(np.uint8)
 
-def filtro_mediana_cython(np.ndarray[DTYPE_t, ndim=2] imagen):
+def median_filter_cython(np.ndarray[DTYPE_t, ndim=2] imagen):
     """
     Implementación de filtro de Mediana en Cython.
     
