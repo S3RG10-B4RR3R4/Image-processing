@@ -48,14 +48,25 @@ This step will generate the .pyd file (or .so on other systems) that you can use
 
 ## 🚀 Usage
 
-After installing the dependencies, you can run the demo script to see the image processing in action:
+### Step 1: Change to the 'examples' directory
+Before running the image processing script, change the directory to the `examples` folder using the following command:
 
 ```bash
-python examples/image_processing.py
+cd examples
+```
+### Step 2: Run the image processing script
+Once you're in the examples directory, you can run the image_processing.py script by executing:
+
+```bash
+python image_processing.py
 ```
 
-This will load a sample image, apply the filters, and display the results along with execution times for each implementation (Python, NumPy, and Cython).
-
+### Step 3: Provide the image path
+The script will prompt you to enter the path to your image. For this example, enter:
+```
+C:\Users\venta\Downloads\PRUEBA-USO\Image-processing\camp-nou.jpg
+```
+This can be adjusted for any image path in your local machine. The script will then load the image, apply the filters, and display the results along with execution times for each implementation (Python, NumPy, and Cython).
 ## 🧑‍💻 Features
 
 * **Filter Implementations**:
