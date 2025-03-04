@@ -27,12 +27,6 @@ from filters_cython import (
 def run_comprehensive_tests(image):
     """
     Runs performance tests for different filter implementations.
-    
-    Args:
-        image (numpy.ndarray): Input grayscale image
-    
-    Returns:
-        tuple: Dictionaries of results and execution times
     """
     # Convert the image to float64 for Cython compatibility
     image_float = image.astype(np.float64)
@@ -70,6 +64,9 @@ def run_comprehensive_tests(image):
                 results[key] = filter_func(image_float)
             else:
                 results[key] = filter_func(image)
+
+            # Check the results for validity
+            print(f"Results for {key}: {results[key].shape}")
             
             times[key] = time.time() - start
 
@@ -78,11 +75,6 @@ def run_comprehensive_tests(image):
 def visualize_results(image, results, times):
     """
     Visualizes the results of different filters.
-    
-    Args:
-        image (numpy.ndarray): Original image
-        results (dict): Filter results
-        times (dict): Execution times
     """
     fig, axes = plt.subplots(3, 4, figsize=(20, 15))
 
@@ -97,12 +89,18 @@ def visualize_results(image, results, times):
     for i, filter_name in enumerate(filters):
         for j, implementation in enumerate(implementations):
             key = f'{filter_name}_{implementation}'
-            axes[i, j+1].imshow(results[key], cmap='gray')
+            filtered_image = results[key]
+            
+            # Normalize the image for proper visualization
+            filtered_image = np.clip(filtered_image, 0, 255)
+            
+            axes[i, j+1].imshow(filtered_image, cmap='gray')
             axes[i, j+1].set_title(f'{filter_name.capitalize()} {implementation.capitalize()}: {times[key]:.4f}s')
             axes[i, j+1].axis('off')
 
     plt.tight_layout()
     plt.show()
+
 
 def analyze_performance(times):
     """
@@ -118,7 +116,7 @@ def analyze_performance(times):
         print(f"\n{filter_name.capitalize()} Filter:")
         python_time = times[f'{filter_name}_python']
         numpy_time = times[f'{filter_name}_numpy']
-        cython_time = times[f'{filter_name}_cython']
+        cython_time = times[f'{filter_name}_cython'] 
 
         print(f"  Python: {python_time:.4f} seconds")
         print(f"  NumPy Speedup: {python_time/numpy_time:.2f}x")
@@ -157,3 +155,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
