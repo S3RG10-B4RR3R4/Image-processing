@@ -128,16 +128,32 @@ def main():
     """
     Main function to demonstrate image processing.
     """
-    # Load an image from a file (replace with your own image path)
-    image_path = 'your_image_path_here.jpg'  # Replace with your image file path
-    image = Image.open(image_path).convert('L')  # Convert to grayscale
-    image_array = np.array(image)
+    # Solicitar la ruta de la imagen
+    image_path = input("Please enter the path to your image: ")
 
-    # Run tests
-    results, times = run_comprehensive_tests(image_array)
+    try:
+        # Cargar la imagen y convertirla a escala de grises
+        image = Image.open(image_path).convert('L')
+        
+        # Redimensionar la imagen a 100x100 píxeles
+        image = image.resize((100, 100))  # Redimensionar la imagen a 100x100 píxeles
+        
+        # Convertir la imagen redimensionada a un arreglo NumPy
+        image_array = np.array(image)
+        
+        print("Image loaded and resized successfully.")
+        
+        # Ejecutar las pruebas
+        results, times = run_comprehensive_tests(image_array)
+        
+        # Visualizar los resultados
+        visualize_results(image_array, results, times)
+        
+        # Analizar el rendimiento
+        analyze_performance(times)
     
-    # Visualize results
-    visualize_results(image_array, results, times)
-    
-    # Analyze performance
-    analyze_performance(times)
+    except FileNotFoundError:
+        print("The specified image path does not exist.")
+
+if __name__ == "__main__":
+    main()
