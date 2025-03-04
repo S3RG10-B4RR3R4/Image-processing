@@ -128,17 +128,16 @@ def main():
     """
     Main function to demonstrate image processing.
     """
-    # Load example image (replace with your own image)
-    example_image = np.random.randint(0, 256, (200, 200), dtype=np.uint8)
-    
+    # Load an image from a file (replace with your own image path)
+    image_path = 'your_image_path_here.jpg'  # Replace with your image file path
+    image = Image.open(image_path).convert('L')  # Convert to grayscale
+    image_array = np.array(image)
+
     # Run tests
-    results, times = run_comprehensive_tests(example_image)
+    results, times = run_comprehensive_tests(image_array)
     
     # Visualize results
-    visualize_results(example_image, results, times)
+    visualize_results(image_array, results, times)
     
     # Analyze performance
     analyze_performance(times)
-
-if __name__ == "__main__":
-    main()
