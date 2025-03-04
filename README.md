@@ -12,6 +12,22 @@ cd Image-processing
 pip install -r requirements.txt
 ```
 
+## 🔧 Additional Setup for Cython
+After installing the dependencies, you will need to install the Microsoft C++ Build Tools to compile the Cython code on Windows. Follow these steps:
+
+**Install Microsoft C++ Build Tools:**
+
+- Download and install the tools from the following link: Microsoft Visual C++ Build Tools.
+- During installation, ensure that you select C++ build tools under the Workloads section.
+- Once the installation is complete, proceed with the setup for the Cython code by compiling it using the following commands:
+
+```bash
+cd src
+python setup.py build_ext --inplace
+```
+This will compile the Cython code and generate the required extensions for the filters.
+
+
 ## 🚀 Usage
 
 After installing the dependencies, you can run the demo script to see the image processing in action:
