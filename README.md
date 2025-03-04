@@ -62,11 +62,22 @@ python image_processing.py
 ```
 
 ### Step 3: Provide the image path
-The script will prompt you to enter the path to your image. For this example, enter:
+The script will prompt you to enter the path to your image. 
+
+For example, if your image is located in the `Downloads` folder on a Windows computer, you would enter something like:
 ```
-C:\Users\venta\Downloads\PRUEBA-USO\Image-processing\camp-nou.jpg
+C:\Users\YourUsername\Downloads\YourFolder\YourImage.jpg
 ```
-This can be adjusted for any image path in your local machine. The script will then load the image, apply the filters, and display the results along with execution times for each implementation (Python, NumPy, and Cython).
+
+Replace `YourUsername` with your actual username, and `YourFolder\YourImage.jpg` with the path to the image you want to process. 
+
+If you're on a different operating system (like macOS or Linux), the path might look like:
+```
+/Users/YourUsername/Downloads/YourFolder/YourImage.jpg
+```
+
+Make sure to provide the correct file path to the image, and the script will handle the rest.
+
 ## 🧑‍💻 Features
 
 * **Filter Implementations**:
