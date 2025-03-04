@@ -1,19 +1,24 @@
+import sys
+import os
 import numpy as np 
 import matplotlib.pyplot as plt
 import time
 from PIL import Image
 
-from src.filters_python import (
+# Agregar la carpeta src al path para poder importar los filtros
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
+from filters_python import (
     gaussian_filter_python, 
     sobel_filter_python, 
     median_filter_python
 )
-from src.filters_numpy import (
+from filters_numpy import (
     gaussian_filter_numpy,
     sobel_filter_numpy,
     median_filter_numpy
 )
-from src.filters_cython import (
+from filters_cython import (
     gaussian_filter_cython,
     sobel_filter_cython,
     median_filter_cython
